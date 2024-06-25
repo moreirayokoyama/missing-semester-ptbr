@@ -1,6 +1,6 @@
 ---
 layout: lecture
-title: "Course overview + the shell"
+title: "Visão Geral do Curso + o shell"
 date: 2020-01-13
 ready: true
 video:
@@ -8,117 +8,96 @@ video:
   id: Z56Jmr9Z34Q
 ---
 
-# Motivation
+# Motivação
 
-As computer scientists, we know that computers are great at aiding in
-repetitive tasks. However, far too often, we forget that this applies
-just as much to our _use_ of the computer as it does to the computations
-we want our programs to perform. We have a vast range of tools
-available at our fingertips that enable us to be more productive and
-solve more complex problems when working on any computer-related
-problem. Yet many of us utilize only a small fraction of those tools; we
-only know enough magical incantations by rote to get by, and blindly
-copy-paste commands from the internet when we get stuck.
+Como cientistas da computação, sabemos que computadores são ótimos para ajudar
+em tarefas repetitivas. Contudo, com muita frequência, nós nos esquecemos que
+isto se aplica tanto para nosso _uso_ do computador quanto para as computações
+que nós queremos que nossos programas façam. Nós temos uma vasta coleção de
+ferramentas disponíveis nas pontas dos nossos dedos que nos permitem ser mais
+produtivos e resolver problemas mais complexos quando trabalhamos em qualquer
+problema relacionado a computadores. Mesmo assim, muitos de nós utilizamos
+apenas uma pequena fração destas ferramentas; só sabemos de cor apenas os
+encantamentos mágicos suficientes para sobreviver, e cegamente copiamos e
+colamos comandos da internet quando ficamos atolados.
 
-This class is an attempt to address this.
+Este curso é uma tentativa de tratar isto.
 
-We want to teach you how to make the most of the tools you know, show
-you new tools to add to your toolbox, and hopefully instill in you some
-excitement for exploring (and perhaps building) more tools on your own.
-This is what we believe to be the missing semester from most Computer
-Science curricula.
+Nós queremos te ensinar como tirar o máximo das ferramentas que você conhece,
+e te mostrar novas ferramentas para adicionar à sua caixa de ferramentas, e
+esperançosamente incutir em você alguma empolgação para explorar (e talvez
+construir) mais ferramentas por conta própria. Isto é o que nós acreditamos
+ser o semestre que faltava da maioria dos currículos de Ciência da Computação.
 
-# Class structure
+# Estrutura do Curso
 
-The class consists of 11 1-hour lectures, each one centering on a
-[particular topic](/2020/). The lectures are largely independent,
-though as the semester goes on we will presume that you are familiar
-with the content from the earlier lectures. We have lecture notes
-online, but there will be a lot of content covered in class (e.g. in the
-form of demos) that may not be in the notes. We will be recording
-lectures and posting the recordings online.
+#todo: Descrever a estrutura do curso
 
-We are trying to cover a lot of ground over the course of just 11 1-hour
-lectures, so the lectures are fairly dense. To allow you some time to
-get familiar with the content at your own pace, each lecture includes a
-set of exercises that guide you through the lecture's key points. After
-each lecture, we are hosting office hours where we will be present to
-help answer any questions you might have. If you are attending the class
-online, you can send us questions at
-[missing-semester@mit.edu](mailto:missing-semester@mit.edu).
+# O Shell
 
-Due to the limited time we have, we won't be able to cover all the tools
-in the same level of detail a full-scale class might. Where possible, we
-will try to point you towards resources for digging further into a tool
-or topic, but if something particularly strikes your fancy, don't
-hesitate to reach out to us and ask for pointers!
+## O que é o Shell?
 
-# Topic 1: The Shell
+Computadores, atualmente, possuem uma variedade de interfaces para dar
+comandos; Interfaces gráficas caprichadas, interfaces de voz, e até mesmo
+Realidade Virtual/Aumentada estão por toda a parte. Elas são ótimas para 80%
+dos casos de uso, mas elas frequentemente são fundamentalmente restritas no
+que elas te permitem fazer - você não consegue pressionar um botão que não
+está lá ou dar um comando de voz que não foi programado. Pra tirar total
+vantagem das ferramentas que o seu computador fornece, nós temos que partir
+pra velha escola e apelar para uma interface de texto: o shell.
 
-## What is the shell?
+Quase todas as plataformas em que você puser suas mãos terão um shell de
+uma forma ou outra, e muitas delas terão vários shells para você escolher.
+Enquanto eles podem variar nos detalhes, em sua essência eles são todos 
+grosseiramente iguais: eles permitem que você rode programas, os dê uma
+entrada, e inspecione sua saída de uma maneira semi-estruturada.
 
-Computers these days have a variety of interfaces for giving them
-commands; fanciful graphical user interfaces, voice interfaces, and
-even AR/VR are everywhere. These are great for 80% of use-cases, but
-they are often fundamentally restricted in what they allow you to do —
-you cannot press a button that isn't there or give a voice command that
-hasn't been programmed. To take full advantage of the tools your
-computer provides, we have to go old-school and drop down to a textual
-interface: The Shell.
+Nesta aula, nós iremos focar no Bourne Again Shell, ou "bash" para abreviar.
+Este é um dos shells mais amplamente usados, e sua sintaxe é similar ao que
+você vai ver em muitos outros shells. Para abrir um _prompt_ do shell (onde
+você pode digitar comandos), você primeiro precisa de um _terminal_. Seu 
+dispositivo provavelmente possui um instalado, ou você pode facilmente
+instalar um.
 
-Nearly all platforms you can get your hands on have a shell in one form or
-another, and many of them have several shells for you to choose from.
-While they may vary in the details, at their core they are all roughly
-the same: they allow you to run programs, give them input, and inspect
-their output in a semi-structured way.
+## Usando o Shell
 
-In this lecture, we will focus on the Bourne Again SHell, or "bash" for
-short. This is one of the most widely used shells, and its syntax is
-similar to what you will see in many other shells. To open a shell
-_prompt_ (where you can type commands), you first need a _terminal_.
-Your device probably shipped with one installed, or you can install one
-fairly easily.
-
-## Using the shell
-
-When you launch your terminal, you will see a _prompt_ that often looks
-a little like this:
+Quando você abrir seu terminal, você verá um _prompt_ que normalmente parece
+um pouco como isto:
 
 ```console
-missing:~$ 
+semestre:~$ 
 ```
 
-This is the main textual interface to the shell. It tells you that you
-are on the machine `missing` and that your "current working directory",
-or where you currently are, is `~` (short for "home"). The `$` tells you
-that you are not the root user (more on that later). At this prompt you
-can type a _command_, which will then be interpreted by the shell. The
-most basic command is to execute a program:
+Esta é a interface de texto principal do shell. Ela te diz que você está
+na máquina "semestre", e que seu "diretório de trabalho atual", ou onde você
+está neste momento, é `~` (abreviação para "home", ou o diretório inicial
+do seu usuário). O `$` diz que você não é o usuário `root` (mais sobre isso
+depois). Neste prompt você pode digitar um _comando_, que será então interpretado
+pelo shell. O comando mais básico é executar um programa:
 
 ```console
 missing:~$ date
-Fri 10 Jan 2020 11:49:31 AM EST
+Tue Jun 25 11:28:42 -03 2024
 missing:~$ 
 ```
 
-Here, we executed the `date` program, which (perhaps unsurprisingly)
-prints the current date and time. The shell then asks us for another
-command to execute. We can also execute a command with _arguments_:
+Aqui, nós executamos o programa `date`, que (talvez, pra surpresa de ninguém)
+imprime a data e hora atuais. O shell então pede por outro comando pra executar.
+Nós podemos também executar um comando com _argumentos_:
 
 ```console
-missing:~$ echo hello
+missing:~$ echo Olá
 hello
 ```
 
-In this case, we told the shell to execute the program `echo` with the
-argument `hello`. The `echo` program simply prints out its arguments.
-The shell parses the command by splitting it by whitespace, and then
-runs the program indicated by the first word, supplying each subsequent
-word as an argument that the program can access. If you want to provide
-an argument that contains spaces or other special characters (e.g., a
-directory named "My Photos"), you can either quote the argument with `'`
-or `"` (`"My Photos"`), or escape just the relevant characters with `\`
-(`My\ Photos`).
+Neste caso, nós dissemos ao shell para executar o programa `echo` com o
+argumento `Olá`. O programa `echo` simplesmente imprime seus argumentos.
+O shell analisa o comando separando-o por espaços, e então roda o programa
+indicado pela primeira palavra, fornecendo cada palavra subsequente como
+um argumento que o programa poderá acessar. Se você fornecer um argumento
+que contenha espaços ou outros caracteres especiais (ex: um diretório com
+o nome "Minhas Fotos"), você pode ou indicar o argumento com `'` ou `"`
+(`"Minhas Fotos"`), ou usar caracteres de escape com `\` (`Minhas\ Fotos`).
 
 But how does the shell know how to find the `date` or `echo` programs?
 Well, the shell is a programming environment, just like Python or Ruby,
